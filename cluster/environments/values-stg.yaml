@@ -1,0 +1,6 @@
+namespace: notes_staging
+configmap:
+  env:
+    name: staging
+container:
+  tag: "1.0-stg"

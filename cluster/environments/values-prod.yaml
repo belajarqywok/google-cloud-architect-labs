@@ -1,0 +1,6 @@
+namespace: notes_production
+configmap:
+  env:
+    name: production
+container:
+  tag: "1.0-prod"

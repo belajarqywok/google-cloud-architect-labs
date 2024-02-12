@@ -1,0 +1,23 @@
+svcName: notes-svc
+namespace: notes_development
+configmap:
+  name: notes-svc-configmap
+  env:
+    name: development
+    host: "0.0.0.0"
+    port: 5000
+    nodePort: 31090
+container:
+  name: notes-svc
+  tag: "1.0-dev"
+  registry: asia-southeast2-docker.pkg.dev/dicoding-gcloud-archi/submission
+resource:
+  request:
+    memory: "100Mi"
+    cpu: "80m"
+  limit:
+    memory: "1Gi"
+    cpu: "200m"
+scalingReplicas:
+  minReplica: 1
+  maxReplica: 3

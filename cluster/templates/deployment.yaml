@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+  namespace: {{ .Values.namespace }}
+  labels:
+    serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+spec:
+  selector:
+    matchLabels:
+      serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+  template:
+    metadata:
+      name: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+      labels:
+        serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+    spec:
+      containers:
+        - name: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+          image:
+            "{{ .Values.container.registry }}/{{ .Values.container.name }}:{{ .Values.container.tag }}"
+          ports:
+            - containerPort: {{ .Values.configmap.env.port }}
+          envFrom:
+            - configMapRef:
+              name: {{ .Values.configmap.name }}
+          resources:
+            requests:
+              memory: {{ .Values.resource.request.memory }}
+              cpu: {{ .Values.resource.request.cpu }}
+            limits:
+              memory: {{ .Values.resource.limit.memory }}
+              cpu: {{ .Values.resource.limit.cpu }}

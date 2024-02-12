@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+  namespace: {{ .Values.namespace }}
+  labels:
+    serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+spec:
+  type: NodePort
+  selector:
+    serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
+  ports:
+    - port: {{ .Values.configmap.env.port }}
+      targetPort: {{ .Values.configmap.env.port }}
+      nodePort: {{ .Values.configmap.env.nodePort }}
+      protocol: TCP

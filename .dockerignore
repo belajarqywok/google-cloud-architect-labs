@@ -1,0 +1,20 @@
+# Git Configurations
+./.git/
+.gitignore
+
+# Development Configurations
+./node_modules/
+
+.env
+.eslintrc.json
+
+Makefile
+package-lock.json
+
+# Infrastructure Configurations
+./cluster/
+./provision/
+
+# Docker Configurations
+./dockerfiles/
+.dockerignore
