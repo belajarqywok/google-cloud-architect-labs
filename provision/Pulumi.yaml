@@ -1,0 +1,7 @@
+name: dicoding-gcloud-architect
+runtime: go
+description: dicoding google cloud architect
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: go
