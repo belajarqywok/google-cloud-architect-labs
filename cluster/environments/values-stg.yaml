@@ -1,4 +1,4 @@
-namespace: notes_staging
+namespace: notes-staging
 configmap:
   env:
     name: staging

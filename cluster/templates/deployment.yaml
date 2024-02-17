@@ -23,7 +23,7 @@ spec:
             - containerPort: {{ .Values.configmap.env.port }}
           envFrom:
             - configMapRef:
-              name: {{ .Values.configmap.name }}
+                name: {{ .Values.configmap.name }}
           resources:
             requests:
               memory: {{ .Values.resource.request.memory }}

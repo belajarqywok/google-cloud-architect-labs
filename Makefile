@@ -1,11 +1,17 @@
 CL=cluster
 SVC=notes-svc
 
-NS_STG=notes_staging
-NS_DEV=notes_development
-NS_PROD=notes_production
+NS_STG=notes-staging
+NS_DEV=notes-development
+NS_PROD=notes-production
 
 REGISTRY=asia-southeast2-docker.pkg.dev/dicoding-gcloud-archi/submission
+
+gke-creds:
+	gcloud container clusters get-credentials dicoding-cluster-labs --zone asia-southeast2-a --project dicoding-gcloud-archi
+
+gcp-fw:
+	gcloud compute firewall-rules create gke-port --allow tcp:5000
 
 pm2-apply :
 	pm2 start pm2.config.js
@@ -24,6 +30,12 @@ create-namespaces:
 	kubectl create ns $(NS_STG)
 	kubectl create ns $(NS_DEV)
 	kubectl create ns $(NS_PROD)
+
+get-svc-endpoint:
+	kubectl get svc -n notes-production
+
+get-nodes-endpoint:
+	kubectl get nodes --output wide
 
 helm-install-dev:
 	helm install $(SVC)-dev $(CL)/ \
@@ -44,6 +56,12 @@ helm-upgrade-prod:
 	helm upgrade $(SVC)-prod $(CL)/ \
 		--values $(CL)/values.yaml \
 		-f $(CL)/environments/values-prod.yaml -n $(NS_PROD)
+
+helm-delete:
+	helm delete notes-svc-prod
+
+helm-list:
+	helm list
 
 artifact-registry-build:
 	docker build --tag $(SVC):$(tag) \

@@ -1,4 +1,4 @@
-namespace: notes_production
+namespace: notes-production
 configmap:
   env:
     name: production

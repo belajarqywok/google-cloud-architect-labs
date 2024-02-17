@@ -4,6 +4,6 @@ metadata:
   name: {{ .Values.configmap.name }}
   namespace: {{ .Values.namespace }}
 data:
-  ENV:  {{ .Values.configmap.env.name }}
-  HOST: {{ .Values.configmap.env.host }}
-  PORT: {{ .Values.configmap.env.port }}
+  ENV:  "{{ .Values.configmap.env.name }}"
+  HOST: "{{ .Values.configmap.env.host }}"
+  PORT: "{{ .Values.configmap.env.port }}"

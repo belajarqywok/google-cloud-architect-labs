@@ -11,6 +11,6 @@ spec:
     serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
   ports:
     - port: {{ .Values.configmap.env.port }}
-      targetPort: {{ .Values.configmap.env.port }}
+      targetPort: {{ .Values.configmap.env.targetPort }}
       nodePort: {{ .Values.configmap.env.nodePort }}
       protocol: TCP
