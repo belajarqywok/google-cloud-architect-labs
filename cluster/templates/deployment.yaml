@@ -20,7 +20,7 @@ spec:
           image:
             "{{ .Values.container.registry }}/{{ .Values.container.name }}:{{ .Values.container.tag }}"
           ports:
-            - containerPort: {{ .Values.configmap.env.port }}
+            - containerPort: {{ .Values.configmap.env.targetPort }}
           envFrom:
             - configMapRef:
                 name: {{ .Values.configmap.name }}

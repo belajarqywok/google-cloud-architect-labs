@@ -6,4 +6,4 @@ metadata:
 data:
   ENV:  "{{ .Values.configmap.env.name }}"
   HOST: "{{ .Values.configmap.env.host }}"
-  PORT: "{{ .Values.configmap.env.port }}"
+  PORT: "{{ .Values.configmap.env.targetPort }}"

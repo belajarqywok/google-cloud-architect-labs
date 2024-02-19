@@ -5,9 +5,9 @@ configmap:
   env:
     name: development
     host: "0.0.0.0"
-    port: 5000
+    port: 3000
     targetPort: 5000
-    nodePort: 31090
+    # nodePort: 31090
 container:
   name: notes-svc
   tag: "1.0-dev"
@@ -19,6 +19,6 @@ resource:
   limit:
     memory: "1Gi"
     cpu: "200m"
-scalingReplicas:
-  minReplica: 1
-  maxReplica: 3
+# scalingReplicas:
+#   minReplica: 1
+#   maxReplica: 3

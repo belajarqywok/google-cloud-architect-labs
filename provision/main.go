@@ -75,7 +75,7 @@ func main() {
 			Network:        gkeNetwork.Name,
 			NetworkingMode: pulumi.String("VPC_NATIVE"),
 			PrivateClusterConfig: &container.ClusterPrivateClusterConfigArgs{
-				EnablePrivateNodes:    pulumi.Bool(false),
+				EnablePrivateNodes:    pulumi.Bool(true),
 				EnablePrivateEndpoint: pulumi.Bool(false),
 				MasterIpv4CidrBlock:   pulumi.String("10.100.0.0/28"),
 			},
@@ -106,7 +106,7 @@ func main() {
 			Cluster:   gkeCluster.ID(),
 			NodeCount: pulumi.Int(nodesPerZone),
 			NodeConfig: &container.NodePoolNodeConfigArgs{
-				MachineType: pulumi.String("e2-small"),
+				MachineType: pulumi.String("e2-medium"),
 				OauthScopes: pulumi.StringArray{
 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 				},

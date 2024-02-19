@@ -8,10 +8,13 @@ NS_PROD=notes-production
 REGISTRY=asia-southeast2-docker.pkg.dev/dicoding-gcloud-archi/submission
 
 gke-creds:
-	gcloud container clusters get-credentials dicoding-cluster-labs --zone asia-southeast2-a --project dicoding-gcloud-archi
+	gcloud container clusters get-credentials dicoding-cluster-labs \
+		--zone asia-southeast2-a \
+		--project dicoding-gcloud-archi
 
 gcp-fw:
-	gcloud compute firewall-rules create gke-port --allow tcp:5000
+	gcloud compute firewall-rules create gke-port \
+		--allow tcp:5000
 
 pm2-apply :
 	pm2 start pm2.config.js
@@ -65,7 +68,7 @@ helm-list:
 
 artifact-registry-build:
 	docker build --tag $(SVC):$(tag) \
-    	--file dockerfiles/production.dockerfile .
+    	--file dockerfiles/$(type).dockerfile .
 
 	docker tag $(SVC):$(tag) \
         $(REGISTRY)/$(SVC):$(tag)
