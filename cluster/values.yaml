@@ -7,7 +7,7 @@ configmap:
     host: "0.0.0.0"
     port: 3000
     targetPort: 5000
-    # nodePort: 31090
+    nodePort: 31090
 container:
   name: notes-svc
   tag: "1.0-dev"

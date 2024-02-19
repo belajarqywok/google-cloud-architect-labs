@@ -7,12 +7,12 @@ metadata:
     serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
 spec:
   # type: NodePort
-  type: ClusterIp
-  # type: LoadBalancer
+  # type: ClusterIp
+  type: LoadBalancer
   selector:
     serviceName: "{{ .Values.svcName }}-{{ .Values.configmap.env.name }}"
   ports:
     - port: {{ .Values.configmap.env.port }}
       targetPort: {{ .Values.configmap.env.targetPort }}
-      # nodePort: {{ .Values.configmap.env.nodePort }}
+      nodePort: {{ .Values.configmap.env.nodePort }}
       protocol: TCP

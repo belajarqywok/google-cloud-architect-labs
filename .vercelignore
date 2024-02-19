@@ -1,0 +1,15 @@
+/src/
+/.git/
+/cluster/
+/provision/
+/dockerfiles/
+/node_modules/
+
+.env
+.dockerignore
+.eslintrc.json
+.gitignore
+Makefile
+package-lock.json
+package.json
+pm2.config.js

@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "http://34.101.221.218:31090/$1",
+      "methods": ["GET"],
+      "headers": {
+           "Access-Control-Allow-Origin": "*",
+           "Location": "http://34.101.221.218:31090"
+      }
+    },
+    {
+      "src": "/notes/(.*)",
+      "dest": "http://34.101.221.218:31090/notes/$1",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "headers": {
+           "Access-Control-Allow-Origin": "*",
+           "Location": "http://34.101.221.218:31090"
+      }
+    }
+  ]
+}
